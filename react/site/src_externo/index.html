@@ -10,16 +10,37 @@
 
         <script type="text/babel">
             class App extends React.Component {
+
+                constructor() {
+                    super();
+                    this.state = {
+                        contador: 0,
+                    }
+                }
+
+                _somarContador(valor) {
+                    this.setState({
+                        contador: this.state.contador + valor,
+                    });
+                }
+
                 render() {
                     return (
-                        <h1>Que legal! Meu primeiro componente de reactct!!!</h1>
+                        <div>
+                            <h1>Que legal! Meu primeiro componente de reactct!!!</h1>
+                            <button onClick={ () => this._somarContador(1) }>Somar</button>
+                            <span>{ this.state.contador }</span>
+                            <button onClick={ () => this._somarContador(-1) }>Subtrair</button>
+                        </div>
                     );
                 }
             }
             React.render(<App/>, document.getElementById("app1"));
+            React.render(<App/>, document.getElementById("appClone"));
         </script>
 
         <div id="app1"></div>
+        <div id="appClone"></div>
 
     </body>
 </html>
